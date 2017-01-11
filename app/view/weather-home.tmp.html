@@ -1,0 +1,17 @@
+<h1>Simple Weather Technical Test</h1>
+
+<div class="input-group">
+  <span class="input-group-addon" id="filter-text">Filter List</span>
+  <input type="text" class="form-control" placeholder="Edinburgh" aria-describedby="filter-text"
+    ng-model="filterText"
+    >
+</div>
+
+<table class="table">
+  <tr ng-repeat="city in cities track by $index" ng-if="city.name.indexOf(filterText) != -1" class="city">
+    <td>
+      <a href="#/weather/{{city._id}}">{{city.name}}</a>
+      (lon:{{city.coord.lon}} lat: {{city.coord.lat}})
+    </td>
+  </tr>
+</table>

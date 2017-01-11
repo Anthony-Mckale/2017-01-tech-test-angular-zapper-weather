@@ -1,0 +1,33 @@
+<h1><a href="#/weather">
+  <span class="glyphicon glyphicon-triangle-left"></span>
+  Details For {{forecast.city.name || locationId}}
+</a></h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>
+      Time
+    </th>
+    <th>
+      Weather
+    </th>
+    <th>
+      Temperature (°C)
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="timeSlice in forecast.list track by $index" class="weather-slice">
+      <td>{{timeSlice.dt_txt}}
+      </td>
+      <td title="{{timeSlice.weather[0].description}}">
+        <img width='25' height='25' alt="{{timeSlice.weather[0].main}}" ng-src="http://openweathermap.org/img/w/{{timeSlice.weather[0].icon}}.png"/>
+        {{timeSlice.weather[0].main}}
+      </td>
+      <td>
+        {{timeSlice.main.temp - 273.2|number}}°C
+      </td>
+    </tr>
+  </tbody>
+</table>
